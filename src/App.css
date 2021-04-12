@@ -1,11 +1,31 @@
-.App {
-  padding: 30px;
-  display: flex;
-}
+/*.App {*/
+/*  padding: 30px;*/
+/*  display: flex;*/
+/*}*/
 
-.App > div {
-  margin-right: 50px;
-}
-button{
-  cursor: pointer;
-}
+/*.App > div {*/
+/*  margin-right: 50px;*/
+/*}*/
+/*button{*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*.isDone {*/
+/*  opacity: .5;*/
+/*  text-decoration: line-through;*/
+/*}*/
+/*.active{*/
+/*  background-color: #e7ffb3;*/
+/*  outline: transparent;*/
+
+/*}*/
+
+/*.error {*/
+/*  border: 2px solid #cc1b1b;*/
+/*  outline: transparent;*/
+/*}*/
+
+/*.errorMessage {*/
+/*  color: #cc1b1b;*/
+/*}*/
+
