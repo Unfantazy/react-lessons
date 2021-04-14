@@ -38,10 +38,9 @@ export type ActionType =
     | removeTodoListActionType
 
 
-
 let initialState: taskStateType = {}
 
-export const tasksReducer = (state= initialState, action: ActionType) => {
+export const tasksReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
 
         case "REMOVE-TASK": {
@@ -65,16 +64,24 @@ export const tasksReducer = (state= initialState, action: ActionType) => {
             if (task) {
                 task.isDone = action.newIsDoneValue
             }
-            return {...state}
+            return {
+                ...state,
+                [action.todoListId]: state[action.todoListId]
+                    .map(task => task.id === action.taskID
+                        ? {...task, isDone: action.newIsDoneValue}
+                        : task)
+            }
+
         }
 
-        case "CHANGE-TASK-TITLE": {
-            const todoListTasks = state[action.todoListId]
-            const task = todoListTasks.find(t => t.id === action.taskID)
-            if (task) {
-                task.title = action.title
+        case 'CHANGE-TASK-TITLE': {
+            return {
+                ...state,
+                [action.todoListId]: state[action.todoListId]
+                    .map(task => task.id === action.taskID
+                        ? {...task, title: action.title}
+                        : task)
             }
-            return {...state}
         }
 
         case "ADD-TODOLIST": {
@@ -92,8 +99,6 @@ export const tasksReducer = (state= initialState, action: ActionType) => {
             return state
     }
 }
-
-
 
 
 export const removeTaskAC = (taskID: string, todolistId: string): RemoveTaskActionType => {

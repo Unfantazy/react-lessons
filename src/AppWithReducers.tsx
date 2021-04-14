@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from 'react';
+import React, {useCallback, useReducer, useState} from 'react';
 import './App.css';
 import {TaskType, Todolist} from './Todolist';
 import {v1} from "uuid";
@@ -60,7 +60,7 @@ export function AppWithReducers() {
         dispatchToTasks(action)
     }
 
-    function addTask(title: string, todoListId: string) {
+    const addTask = useCallback((title: string, todoListId: string) => {
         // const newTask: TaskType = {
         //     id: v1(),
         //     title: title,
@@ -74,7 +74,7 @@ export function AppWithReducers() {
 
         let action = addTaskAC(title, todoListId)
         dispatchToTasks(action)
-    }
+    }, [])
 
     function changeTaskStatus(taskID: string, newIsDoneValue: boolean, todoListId: string) {
         // const todoListTasks = tasks[todoListId]
@@ -97,7 +97,6 @@ export function AppWithReducers() {
         let action = changeTaskTitleAC(taskID, newTitle, todoListId)
         dispatchToTasks(action)
     }
-
 
     function changeFilter(newFilterValue: FilterValuesType, todoListId: string) {
         // const todoList = todoLists.find(tl => tl.id === todoListId);
@@ -128,7 +127,7 @@ export function AppWithReducers() {
         dispatchToTasks(action)
     }
 
-    function addTodoList(title: string) {
+    const addTodoList = useCallback((title: string) => {
         // const newTodoListID = v1()
         // const newTodoList: todoListType = {
         //     id: newTodoListID,
@@ -142,7 +141,7 @@ export function AppWithReducers() {
         dispatchToTodoLists(action)
         dispatchToTasks(action)
 
-    }
+    }, [])
 
     //UI:
 

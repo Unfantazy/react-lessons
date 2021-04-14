@@ -63,7 +63,7 @@ function App() {
         // setTasks([newTask, ...tasks])
     }
 
-    function changeTaskStatus(taskID: string, newIsDoneValue: boolean, todoListId: string) {
+   function changeTaskStatus(taskID: string, newIsDoneValue: boolean, todoListId: string) {
         const todoListTasks = tasks[todoListId]
         const task = todoListTasks.find(t => t.id === taskID)
         if (task) {
